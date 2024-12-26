@@ -38,8 +38,22 @@ for i in filepath:
         pdf.cell(w=30,h=8,txt=str(row["amount_purchased"]), border=1)
         pdf.cell(w=30,h=8,txt=str(row["price_per_unit"]), border=1)
         pdf.cell(w=30,h=8,txt=str(row["total_price"]), border=1, ln=1)
-
-
     
+    total_price = df["total_price"].sum()
+    pdf.set_font(family="Times", size=10)
+    pdf.cell(w=30,h=8,txt="", border=1)
+    pdf.cell(w=70,h=8,txt="", border=1)
+    pdf.cell(w=30,h=8,txt="", border=1)
+    pdf.cell(w=30,h=8,txt="", border=1)
+    pdf.cell(w=30,h=8,txt=str(total_price), border=1, ln=1)
+
+    pdf.set_font(family="Times", size=16, style="B")
+    pdf.cell(w=28,h=25,txt=f"Total Price is {total_price}" , ln=1)
+
+    pdf.set_font(family="Times", size=16, style="B")
+    pdf.cell(w=28,h=8,txt="PythonHow")
+    pdf.image("pythonhow.png",w=10,h=10)
+
+   
     pdf.output(f"PDFs/{name}.pdf")
 
